@@ -60,28 +60,26 @@ or
 C:\> medguard-agent -c /path/to/config.toml
 ```
 
-A minimum working example configuration is shown below.
+A minimum example configuration is shown below.
 
 ```toml
-title = "TOML Example"
 
-[owner]
-name = "Tom Preston-Werner"
-dob = 1979-05-27T07:32:00-08:00
+[instance]
+name = "server_name_1"
 
-[database]
-enabled = true
-ports = [ 8000, 8001, 8002 ]
-data = [ ["delta", "phi"], [3.14] ]
-temp_targets = { cpu = 79.5, case = 72.0 }
+[api-key]
+key = my-orgs-secret-api-key
 
-[servers]
+[agent-instances]
 
-[servers.alpha]
-ip = "10.0.0.1"
-role = "frontend"
+[agent-instances.server_name_1]
+location = "10.0.0.4:3030" 
+target = "10.0.0.4:389"
 
-[servers.beta]
-ip = "10.0.0.2"
-role = "backend"
+[agent-instances.server_name_2]
+location = "10.0.1.84:3030" 
+target = "10.0.1.84:389"
 ```
+
+[Contact us](https://www.medguard.io/#contact-us-section) to discuss
+specific configuration requirements your organisation may have.
