@@ -10,7 +10,7 @@ toolkit Medguard Agent.
 Our cloud identity provider (IdP) service exposes a set of endpoints
 that Medguard Agent interacts with during an authentication event.
 
-These endpoints can be found [here](https://www.google.com).
+These endpoints can be found [here](https://medguard.criteria.sh/api).
 
 Please note that endpoints should not ordinarily be accessed directly
 by providers.
