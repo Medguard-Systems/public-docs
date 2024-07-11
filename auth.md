@@ -56,7 +56,7 @@ foo@bar:~$ medguard-agent -c /path/to/config.toml
 
 or
 
-```console
+```shell
 C:\> medguard-agent -c /path/to/config.toml
 ```
 
