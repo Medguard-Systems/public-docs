@@ -10,7 +10,7 @@ toolkit Medguard Agent.
 Our cloud identity provider (IdP) service exposes a set of endpoints
 that Medguard Agent interacts with during an authentication event.
 
-These endpoints can be found [here](www.google.com).
+These endpoints can be found [here](https://www.google.com).
 
 Please note that endpoints should not ordinarily be accessed directly
 by providers.
@@ -23,3 +23,16 @@ us](https://www.medguard.io/#contact-us-section) to discuss how we can
 customise Medguard Agent to fit your existing infrastructure
 requirements.
 
+
+### High Level Explanation
+
+```mermaid
+flowchart TD
+    A[Auth API] <-->|HTTP req/res| C
+
+    C(Medguard Agent Instances) <--> C
+    C --> |TCP/UDP/TLS| E[LDAP Server/Active Directory 1]
+    C --> |TCP/UDP/TLS| F[LDAP Server/Active Directory 2]
+```
+
+Medguard Agent 
