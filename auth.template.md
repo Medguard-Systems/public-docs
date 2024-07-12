@@ -26,7 +26,14 @@ requirements.
 
 ### High-Level Explanation
 
-![diagram](./auth-1.png)
+```mermaid
+flowchart TD
+    A[Authentication API] <-->|HTTP req/res| C
+
+    C(Medguard Agent Instances) <--> C
+    C --> |TCP/UDP/TLS| E[LDAP Server/Active Directory 1]
+    C --> |TCP/UDP/TLS| F[LDAP Server/Active Directory 2]
+```
 
 Medguard Agent is performing 3 distinct functions:
 1. HTTP client interacting with IdP endpoints,

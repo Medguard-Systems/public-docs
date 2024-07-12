@@ -1,0 +1,57 @@
+<h1>Medguard Systems</h1>
+<h2>Authentication Documentation</h2>
+<p>Medguard Systems provides credentialing and authentication products for
+diagnostic providers.  This documentation outlines general technical
+details for the Authentication API and the on-premise software
+toolkit Medguard Agent.</p>
+<h2>Authentication API</h2>
+<p>Our cloud identity provider (IdP) service exposes a set of endpoints
+that Medguard Agent interacts with during an authentication event.</p>
+<p>These endpoints can be found <a href="https://medguard.criteria.sh/api">here</a>.</p>
+<p>Please note that endpoints should not ordinarily be accessed directly
+by providers.</p>
+<h2>Medguard Agent</h2>
+<p>Our on-premise software is designed to be simple to configure and
+customised for individual use cases. The documentation presented here
+represents a general use case. <a href="https://www.medguard.io/#contact-us-section">Contact
+us</a> to discuss how we can
+customise Medguard Agent to fit your existing infrastructure
+requirements.</p>
+<h3>High-Level Explanation</h3>
+<p><img src="./auth-1.png" alt="diagram" /></p>
+<p>Medguard Agent is performing 3 distinct functions:</p>
+<ol>
+<li>HTTP client interacting with IdP endpoints,</li>
+<li>LDAP proxy / client / server endpoints,</li>
+<li>Coordination of state across Medguard Agent Instances.</li>
+</ol>
+<p>At a high level Medguard Agent is a function that maps a traditional
+HTTP OAuth flow onto authentication in an LDAP setting.</p>
+<h3>Configuration</h3>
+<p>Medguard Agent is easily configured using a TOML file.
+On launch of the executable, the configuration flag is passed.</p>
+<pre><code class="language-console">foo@bar:~$ medguard-agent -c /path/to/config.toml
+</code></pre>
+<p>or</p>
+<pre><code class="language-shell">C:\&gt; medguard-agent -c /path/to/config.toml
+</code></pre>
+<p>A minimum example configuration is shown below.</p>
+<pre><code class="language-toml">
+[instance]
+name = &quot;server_name_1&quot;
+
+[api-key]
+key = my-orgs-secret-api-key
+
+[agent-instances]
+
+[agent-instances.server_name_1]
+location = &quot;10.0.0.4:3030&quot; 
+target = &quot;10.0.0.4:389&quot;
+
+[agent-instances.server_name_2]
+location = &quot;10.0.1.84:3030&quot; 
+target = &quot;10.0.1.84:389&quot;
+</code></pre>
+<p><a href="https://www.medguard.io/#contact-us-section">Contact us</a> to discuss
+specific configuration requirements your organisation may have.</p>
